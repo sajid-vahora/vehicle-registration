@@ -1,0 +1,277 @@
+swagger: '2.0'
+info:
+  description: Vehicle registration APIs
+  version: '1.0'
+  title: Vehicle registration
+  contact: {}
+host: 'localhost:8080'
+basePath: '/api/v1'
+
+paths:
+  /vehicle/{vehicleId}:
+    get:
+      tags:
+        - Vehicle
+      summary: ''
+      description: ''
+      operationId: vehicleGet
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: vehicleId
+          in: path
+          description: vehicle Id 
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+           $ref: '#/definitions/VehicleResponse'
+        '400':
+          description: Invalid Data
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  
+          
+  /vehicle:
+    post:
+      tags:
+        - Vehicle
+      summary: ''
+      description: creates a Vehicle
+      operationId: vehiclePost
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: item
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/VehicleRequest'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ModelApiResponse'
+        '201':
+          description: Created
+        '400':
+          description: Invalid Order
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          
+  /person/{personId}:
+    get:
+      tags:
+        - Person
+      summary: ''
+      description: ''
+      operationId: personGet
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: personId
+          in: path
+          description: person id
+          required: true
+          type: integer
+      responses:
+        '200':
+          description: successful operation
+          schema:
+           $ref: '#/definitions/PersonResponse'
+        '400':
+          description: Invalid Data
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+          
+  /person:
+    post:
+      tags:
+        - Person
+      summary: ''
+      description: creates a person
+      operationId: person Post
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: item
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/PersonRequest'
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            $ref: '#/definitions/ModelApiResponse'
+        '201':
+          description: Created
+        '400':
+          description: Invalid Order
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /person/{personId}/linkVehicle:
+    post:
+      tags:
+        - Person
+      summary: ''
+      description: ''
+      operationId: linkVehicle
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: personId
+          in: path
+          description: person id
+          required: true
+          type: integer
+        - in: body
+          name: item
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/RegistrationRequest'
+      responses:
+        '204':
+          description: successful operation
+        '400':
+          description: Invalid Data
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+  /person/{personId}/unLinkVehicle:
+    post:
+      tags:
+        - Person
+      summary: ''
+      description: ''
+      operationId: unLinkVehicle
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - name: personId
+          in: path
+          description: person id
+          required: true
+          type: integer
+        - in: body
+          name: item
+          description: ''
+          required: true
+          schema:
+            $ref: '#/definitions/RegistrationRequest'
+      responses:
+        '204':
+          description: successful operation
+        '400':
+          description: Invalid Data
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '404':
+          description: Not Found
+
+definitions:
+  
+  ModelApiResponse:
+    type: object
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      type:
+        type: string
+
+  VehicleResponse:
+    type: "object"
+    properties:
+      vehicleId:
+        type: "integer"
+        format: "int64"
+      make:
+        type: string
+      registrationNumber:
+        type: string
+  
+  VehicleRequest:
+    type: "object"
+    required: 
+    - "registrationNumber"
+    properties:
+      make:
+        type: string
+      registrationNumber:
+        type: string
+
+  PersonResponse:
+    type: "object"
+    required: 
+    - "personId"
+    properties:
+      personId:
+        type: "integer"
+        format: "int64"
+      firstName:
+        type: string
+      lastName:
+        type: string
+      vehicles:
+        type: array
+        items:
+           $ref: '#/definitions/VehicleResponse'
+
+  PersonRequest:
+    type: "object"
+    required: 
+    - "personId"
+    properties:
+      firstName:
+        type: string
+      lastName:
+        type: string
+        
+  RegistrationRequest:
+    type: "object"
+    required: 
+    - "personId"
+    properties:
+      vehicleId:
+        type: integer
