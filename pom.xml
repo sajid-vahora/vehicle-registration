@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.coding.task.rego</groupId>
-    <artifactId>rego</artifactId>
+    <artifactId>vehicle-registration</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>rego</name>
 
