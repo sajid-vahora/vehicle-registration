@@ -6,7 +6,6 @@ import com.vehicle.regisration.exception.ResourceNotFoundException;
 import com.vehicle.regisration.io.swagger.model.PersonRequest;
 import com.vehicle.regisration.io.swagger.model.PersonResponse;
 import com.vehicle.regisration.io.swagger.model.VehicleResponse;
-import com.coding.task.rego.model.*;
 import com.vehicle.regisration.model.Vehicle;
 import com.vehicle.regisration.repository.PersonRepository;
 import com.vehicle.regisration.repository.VehicleRepository;
