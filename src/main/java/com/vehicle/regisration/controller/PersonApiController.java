@@ -6,7 +6,7 @@ import com.vehicle.regisration.io.swagger.api.PersonApi;
 import com.vehicle.regisration.io.swagger.model.ModelApiResponse;
 import com.vehicle.regisration.io.swagger.model.PersonRequest;
 import com.vehicle.regisration.io.swagger.model.PersonResponse;
-import com.vehicle.regisration.model.RegistrationRequest;
+import com.vehicle.regisration.io.swagger.model.RegistrationRequest;
 import com.vehicle.regisration.service.PersonService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.*;

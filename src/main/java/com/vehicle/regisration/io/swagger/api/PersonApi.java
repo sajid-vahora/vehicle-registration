@@ -10,7 +10,7 @@ import com.vehicle.regisration.exception.ResourceNotFoundException;
 import com.vehicle.regisration.io.swagger.model.ModelApiResponse;
 import com.vehicle.regisration.io.swagger.model.PersonRequest;
 import com.vehicle.regisration.io.swagger.model.PersonResponse;
-import com.vehicle.regisration.model.RegistrationRequest;
+import com.vehicle.regisration.io.swagger.model.RegistrationRequest;
 import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
